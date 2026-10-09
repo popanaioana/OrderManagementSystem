@@ -58,3 +58,6 @@ index-files/
 legal/
 resource-files/
 script-files/
+
+# Generated Javadoc packages
+/com/
