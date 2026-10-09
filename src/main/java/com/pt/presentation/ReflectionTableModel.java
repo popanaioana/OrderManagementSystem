@@ -34,7 +34,7 @@ public class ReflectionTableModel {
         if (objects == null || objects.isEmpty()) {
             return model;
         }
-        Class<?> objectClass = objects.getFirst().getClass();s
+        Class<?> objectClass = objects.getFirst().getClass();
         if (objectClass.isRecord()) {
             java.util.Arrays.stream(objectClass.getRecordComponents())
                     .map(RecordComponent::getName)

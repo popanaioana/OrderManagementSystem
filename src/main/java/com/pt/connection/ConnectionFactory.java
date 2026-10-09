@@ -10,11 +10,11 @@ import java.sql.Statement;
  * Singleton Factory class responsible for managing database connection lifecycles.
  * It centralizes connection parameters, handles active driver lookups, and encapsulates clean resource disposal workflows.
  */
-
 public class ConnectionFactory {
-    private static final String URL = "jdbc:sqlserver://localhost:1433;databaseName=OrdersManagement;encrypt=true;trustServerCertificate=true;";
-    private static final String USER = "orders_user";
-    private static final String PASSWORD = "Orders123!";
+
+    private static final String URL = System.getenv("DB_URL");
+    private static final String USER = System.getenv("DB_USER");
+    private static final String PASSWORD = System.getenv("DB_PASSWORD");
 
     /**
      * Private constructor to prevent direct external instantiation of this utility factory class.
@@ -28,11 +28,18 @@ public class ConnectionFactory {
      * @return an active operational {@link Connection} database object instance, or {@code null} if an unhandled connection SQL failure occurs
      */
     public static Connection getConnection() {
+        if (URL == null || USER == null || PASSWORD == null) {
+            throw new IllegalStateException(
+                    "Database environment variables are not configured."
+            );
+        }
+
         try {
             return DriverManager.getConnection(URL, USER, PASSWORD);
         } catch (SQLException e) {
-            e.printStackTrace();
-            return null;
+            throw new IllegalStateException(
+                    "Failed to connect to the database.", e
+            );
         }
     }
 

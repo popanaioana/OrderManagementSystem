@@ -15,7 +15,8 @@ import java.sql.Timestamp;
  * @param orderDate   the specific processing date timestamp log
  */
 
-public record Bill(
+public record Bill( //record -> forma mai scurta de clasa, immutable by default, folosita pentru simple data carriers
+                    //immutable inseamna ca nu poate fi modificata (toate field urile sunt final)
         int id,
         int orderId,
         String clientName,
