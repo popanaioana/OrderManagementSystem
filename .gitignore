@@ -38,3 +38,23 @@ Thumbs.db
 *.tmp
 *.bak
 *~
+
+# Generated Javadoc
+allclasses-index.html
+allpackages-index.html
+element-list
+help-doc.html
+index.html
+member-search-index.js
+module-search-index.js
+overview-summary.html
+overview-tree.html
+package-search-index.js
+search.html
+serialized-form.html
+tag-search-index.js
+type-search-index.js
+index-files/
+legal/
+resource-files/
+script-files/
